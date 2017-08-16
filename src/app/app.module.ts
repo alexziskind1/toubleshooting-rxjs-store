@@ -4,17 +4,28 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { BacklogComponent } from "app/backlog.component";
+import { StoreTestComponent } from "app/store-test.component";
+import { PtBacklogService } from "app/ptbacklog.service";
+import { Store } from "app/store";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BacklogComponent,
+    StoreTestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    PtBacklogService,
+    Store
+  ],
+  bootstrap: [
+    AppComponent]
 })
 export class AppModule { }
