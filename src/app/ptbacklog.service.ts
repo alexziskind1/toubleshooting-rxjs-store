@@ -8,8 +8,8 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from "./store";
 import { PtItem } from "./shared/models/domain-models";
 
-const localIP = '192.168.1.202:8080';
-//const localIP = '10.142.32.184:8080';
+//const localIP = '192.168.1.202:8080';
+const localIP = '10.142.32.184:8080';
 const apiEndpoint = '/api';
 
 let headers = new Headers();
@@ -60,7 +60,10 @@ export class PtBacklogService {
     public fetchItems() {
         this.http.get(this.filteredBacklogUrl, options)
             .map(res => res.json())
-            .do((data: PtItem[]) => {
+            .catch((error: any) => {
+                return Observable.throw(error.json().error || 'Server error');
+            })
+            .subscribe((data: PtItem[]) => {
                 this.store.set('backlogItems', data);
             });
         //.subscribe();

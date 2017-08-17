@@ -11,10 +11,12 @@ import { Subscription } from "rxjs/Subscription";
     <div>
         <h1>Backlog</h1>
 
-        <button (click)="changeView(1)">Set View 1</button>
+        <button (click)="changeView(0)">My items</button>
+        <button (click)="changeView(1)">Open Items</button>
+        <button (click)="changeView(2)">Closed items</button>
 
         <ul>
-            <li *ngFor="let item of items; let i = index">
+            <li *ngFor="let item of items$ | async; let i = index">
                 {{ item.title }}
             </li>
         </ul>
