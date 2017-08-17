@@ -12,6 +12,7 @@ export interface State {
     //selectedViewIndex: ViewIndex,
     prop1: string;
     prop2: string;
+    lastSelection: number;
     [key: string]: any;
 }
 
@@ -20,5 +21,6 @@ export const INITIAL_STATE: State = {
     //currentUser: undefined,
     //selectedViewIndex: { idx: 1 }
     prop1: undefined,
-    prop2: undefined
+    prop2: undefined,
+    lastSelection: 1
 };
